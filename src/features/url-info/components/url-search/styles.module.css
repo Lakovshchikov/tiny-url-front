@@ -1,9 +1,7 @@
-.create-url-card {
-  height: 370px;
-  width: 500px;
-  margin: 40px auto;
+.search-wrapper {
+  width: 100%;
 }
 
-.space {
-  width: "100%";
+.search-input {
+  width: 100%;
 }

@@ -1,23 +1,26 @@
-import { Empty, Skeleton, Space, Typography } from "antd";
-import { useUnit } from "effector-react";
 import { getRedirectUrl } from "@shared/lib";
-import { searchUrlFormModel } from "../../model";
+import type { Url } from "@shared/types";
+import { Empty, Skeleton, Space, Typography } from "antd";
+import type { FC } from "react";
 
-export const UrlCard: React.FC = () => {
-  const [url, isLoading, error] = useUnit([
-    searchUrlFormModel.$url,
-    searchUrlFormModel.$isLoading,
-    searchUrlFormModel.$error,
-  ]);
+type UrlCardProps = {
+  title: string;
+  url:
+    | (Url & {
+        clickCount?: number;
+      })
+    | null;
+  loading?: boolean;
+  error?: Error | null;
+};
 
-  console.log("url", url, "isLoading", isLoading, "error", error);
-
+export const UrlCard: FC<UrlCardProps> = ({ url, title, error, loading }) => {
   return (
     <>
-      <Typography.Title level={5}>Информация о ссылке:</Typography.Title>
-      {isLoading && <Skeleton active />}
-      {((!isLoading && !url) || error) && <Empty />}
-      {url && !isLoading && (
+      <Typography.Title level={5}>{title}</Typography.Title>
+      {loading && <Skeleton active />}
+      {((!loading && !url) || error) && <Empty />}
+      {url && !loading && (
         <Space direction="vertical" size="small" style={{ width: "100%" }}>
           <Typography.Text type="secondary">Ссылка:</Typography.Text>
           <Space>
@@ -31,8 +34,12 @@ export const UrlCard: React.FC = () => {
           <Typography.Text>{url.expiresAt}</Typography.Text>
           <Typography.Text type="secondary">Создана:</Typography.Text>
           <Typography.Text>{url.createdAt}</Typography.Text>
-          <Typography.Text type="secondary">Всего кликов:</Typography.Text>
-          <Typography.Text>{url.clickCount}</Typography.Text>
+          {url.clickCount && (
+            <>
+              <Typography.Text type="secondary">Всего кликов:</Typography.Text>
+              <Typography.Text>{url.clickCount}</Typography.Text>
+            </>
+          )}
         </Space>
       )}
     </>

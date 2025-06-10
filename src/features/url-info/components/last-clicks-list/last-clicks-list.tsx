@@ -10,7 +10,7 @@ export const LastClicksList = () => {
     <Card title="Последние переходы" className={styles["clicks-card"]}>
       <List
         bordered
-        dataSource={analytics?.clicks}
+        dataSource={analytics?.clicks || []}
         locale={{ emptyText: "Переходов пока нет" }}
         renderItem={(item) => (
           <List.Item key={item.id}>

@@ -47,7 +47,7 @@ export const CreateUrlForm = () => {
         <Input
           id="shortUrl"
           value={form.values.shortUrl}
-          onChange={handleChangeValue("originalUrl")}
+          onChange={handleChangeValue("shortUrl")}
           placeholder="my-alias"
         />
       </Form.Item>
@@ -64,6 +64,7 @@ export const CreateUrlForm = () => {
           showTime
           value={form.values.currentSelectedExpiresAt}
           onChange={handleChangeDate}
+          className={styles.datePicker}
         />
       </Form.Item>
 

@@ -1,9 +1,10 @@
-import { Card, Divider, Typography } from "antd";
+import { Divider, Typography } from "antd";
 import { CreatedUrlCard, CreateUrlForm } from "./components";
+import { Section } from "@shared/components";
 
 export const CreateShortUrlSection = () => {
   return (
-    <Card
+    <Section
       title={
         <Typography.Title level={4}>Создать короткую ссылку</Typography.Title>
       }
@@ -11,6 +12,6 @@ export const CreateShortUrlSection = () => {
       <CreateUrlForm />
       <Divider />
       <CreatedUrlCard />
-    </Card>
+    </Section>
   );
 };

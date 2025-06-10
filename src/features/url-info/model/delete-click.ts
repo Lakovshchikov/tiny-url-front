@@ -9,7 +9,7 @@ const deleteClickFx = createEffect<string, unknown>(
   async (shortUrl: string) => {
     await api.deleteClick({ shortUrl });
     return true;
-  },
+  }
 );
 
 const $error = restore(deleteClickFx.failData, null);
@@ -19,10 +19,7 @@ const $isLoading = deleteClickFx.pending;
 sample({
   clock: clickDeleted,
   source: { url: searchUrlFormModel.$url },
-  filter: (url) => {
-    console.log("filter url", url);
-    return url !== null;
-  },
+  filter: (url) => url !== null,
   fn: ({ url }) => (url ? url.shortUrl : ""),
   target: deleteClickFx,
 });

@@ -1,1 +1,1 @@
-export { UrlInfoSection } from "./url-info";
+export { UrlInfoSection } from "./url-info-section";

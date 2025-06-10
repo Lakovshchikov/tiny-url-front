@@ -35,7 +35,7 @@ sample({
 
 export const createUrlFormModel = {
   $url,
-  $isLoading: $isLoading,
-  error: $error,
+  $isLoading,
+  $error,
   formSubmitted,
 };

@@ -1,4 +1,4 @@
-import { Button, Form, Input, Space } from "antd";
+import { Button, Flex, Form, Input } from "antd";
 import { useForm } from "../../hooks";
 import styles from "./styles.module.css";
 
@@ -12,12 +12,13 @@ export const UrlSearch = () => {
     };
 
   return (
-    <Space direction="horizontal" size="middle" className={styles.space}>
+    <Flex gap="middle" className={styles["search-wrapper"]}>
       <Form.Item
         label="Короткий URL"
         htmlFor="shortUrl"
         validateStatus={form.errors.shortUrl ? "error" : ""}
         help={form.errors.shortUrl}
+        className={styles["search-input"]}
       >
         <Input
           required
@@ -28,9 +29,9 @@ export const UrlSearch = () => {
         />
       </Form.Item>
 
-      <Button type="primary" block onClick={() => form.handleSubmit()}>
+      <Button type="primary" onClick={() => form.handleSubmit()}>
         Найти
       </Button>
-    </Space>
+    </Flex>
   );
 };

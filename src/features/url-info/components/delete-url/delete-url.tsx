@@ -1,4 +1,4 @@
-import { Button, Popconfirm, message } from "antd";
+import { Button, Flex, Popconfirm, message } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import { useUnit } from "effector-react";
 import { deleteUrlModel, searchUrlFormModel } from "../../model";
@@ -20,7 +20,7 @@ export const DeleteShortUrlButton = () => {
   };
 
   return (
-    <>
+    <Flex justify="end" align="center" gap={8}>
       {url && (
         <Popconfirm
           title="Удалить ссылку?"
@@ -34,6 +34,6 @@ export const DeleteShortUrlButton = () => {
           </Button>
         </Popconfirm>
       )}
-    </>
+    </Flex>
   );
 };
