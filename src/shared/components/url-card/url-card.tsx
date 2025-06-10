@@ -24,9 +24,14 @@ export const UrlCard: FC<UrlCardProps> = ({ url, title, error, loading }) => {
         <Space direction="vertical" size="small" style={{ width: "100%" }}>
           <Typography.Text type="secondary">Ссылка:</Typography.Text>
           <Space>
-            <Typography.Text copyable>
+            <Typography.Link
+              href={getRedirectUrl(url.shortUrl)}
+              target="_blank"
+              rel="noopener noreferrer"
+              copyable
+            >
               {getRedirectUrl(url.shortUrl)}
-            </Typography.Text>
+            </Typography.Link>
           </Space>
           <Typography.Text type="secondary">Оригинальный URL:</Typography.Text>
           <Typography.Text copyable>{url.originalUrl}</Typography.Text>
