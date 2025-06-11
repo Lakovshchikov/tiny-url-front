@@ -9,11 +9,11 @@ const resetUrl = createEvent();
 const submitFormFx = createEffect<string, GetUrlResponse>(
   async (shortUrl: string) => {
     return api.getUrlInfo({ shortUrl });
-  }
+  },
 );
 
 const $url = restore<GetUrlResponse>(submitFormFx.doneData, null).reset(
-  resetUrl
+  resetUrl,
 );
 
 const $error = restore(submitFormFx.failData, null);

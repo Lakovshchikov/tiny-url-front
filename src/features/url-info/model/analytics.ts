@@ -7,12 +7,12 @@ const resetAnalytics = createEvent();
 const loadAnalyticsFx = createEffect<string, GetAnalyticsResponse>(
   async (shortUrl: string) => {
     return api.getAnalytics({ shortUrl });
-  }
+  },
 );
 
 const $analytics = restore<GetAnalyticsResponse>(
   loadAnalyticsFx.doneData,
-  null
+  null,
 ).reset(resetAnalytics);
 
 const $error = restore(loadAnalyticsFx.failData, null);

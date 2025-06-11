@@ -13,7 +13,7 @@ export const createShortUrlFormValuesSchema = z.object({
       },
       {
         message: "Дата истечения должна быть больше текущего времени",
-      }
+      },
     ),
   originalUrl: z.string().url(),
   shortUrl: z

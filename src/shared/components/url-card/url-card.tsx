@@ -1,7 +1,7 @@
-import { getRedirectUrl } from "@shared/lib";
 import type { Url } from "@shared/types";
 import { Empty, Skeleton, Space, Typography } from "antd";
 import type { FC } from "react";
+import styles from "./styles.module.css";
 
 type UrlCardProps = {
   title: string;
@@ -21,16 +21,20 @@ export const UrlCard: FC<UrlCardProps> = ({ url, title, error, loading }) => {
       {loading && <Skeleton active />}
       {((!loading && !url) || error) && <Empty />}
       {url && !loading && (
-        <Space direction="vertical" size="small" style={{ width: "100%" }}>
+        <Space
+          direction="vertical"
+          size="small"
+          className={styles["fields-wrapper"]}
+        >
           <Typography.Text type="secondary">Ссылка:</Typography.Text>
           <Space>
             <Typography.Link
-              href={getRedirectUrl(url.shortUrl)}
+              href={`${window.location.origin}/${url.shortUrl}`}
               target="_blank"
               rel="noopener noreferrer"
               copyable
             >
-              {getRedirectUrl(url.shortUrl)}
+              {`${window.location.origin}/${url.shortUrl}`}
             </Typography.Link>
           </Space>
           <Typography.Text type="secondary">Оригинальный URL:</Typography.Text>

@@ -9,7 +9,7 @@ const deleteClickFx = createEffect<string, unknown>(
   async (shortUrl: string) => {
     await api.deleteClick({ shortUrl });
     return true;
-  }
+  },
 );
 
 const $error = restore(deleteClickFx.failData, null);
